@@ -1,8 +1,8 @@
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
-from src.endpoints import ingest, test
-from src.parametric.find_location import Find
-from src.util.settings import *
+# from src.endpoints import ingest, test
+# from src.parametric.find_location import Find
+# from src.util.settings import *
 import faulthandler 
 import json
 
@@ -20,7 +20,14 @@ app.add_middleware(
 
 @app.get("/")
 def home():
-        resources = (
-            "Title": "Ebenezer's Application"
-        )
-        return resources
+    resources = {
+        "Title": "Ebenezer's Application"
+    }
+    return resources
+
+@app.get("/awesome")
+def home():
+    resources = {
+        "Title": "Ebenezer's Application 2"
+    }
+    return resources
