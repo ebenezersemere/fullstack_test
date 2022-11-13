@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from src.test import Adder
 from fastapi.middleware.cors import CORSMiddleware
 # from src.endpoints import ingest, test
 # from src.parametric.find_location import Find
@@ -20,14 +21,16 @@ app.add_middleware(
 
 @app.get("/")
 def home():
+    adder = Adder()
     resources = {
-        "Title": "Ebenezer's Application"
+        "Title": "Ebenezer's Application",
+        "Count": adder.count
     }
     return resources
 
 @app.get("/awesome")
-def home():
+def awesome():
     resources = {
-        "Title": "Ebenezer's Application 2"
+        "Title": "Ebenezer's Application 2 Demo"
     }
     return resources
